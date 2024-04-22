@@ -1,31 +1,65 @@
 import { Link } from "react-router-dom";
+import "./Header.css";
+import { useState } from "react";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { IoPersonCircle } from "react-icons/io5";
+import logo from './LogoRmPadel.png'
 
 export const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="navbar">
-      <div className="logo">
-        <span className="span">RMPADELINDOOR</span>
-      </div>
-      <div className="items">
-        <Link to="/">Inicio</Link>
-        
-        <div className="dropdown">
-          <button className="dropbtn">
-            Club
-            <i className="fa fa-caret-down"></i>
-          </button>
-          <div className="dropdown-content">
-            <a href="#">Link 1</a>
-            <Link to="/pistasIndoor">Pistas Indoor</Link>
-            <Link to="/instalaciones">Instalaciones</Link>
+    <>
+      <nav>
+        <div className="header-logo">
+            <img src={logo} alt="" />
+        </div>
+        <div className={isOpen ? "header-container-burger" : "header-container"}>
+          <div className="header-routesDiv">
+            <ul className="header-routes">
+              <li>
+                <Link to="/" className="header-route">
+                  Inicio
+                </Link>
+              </li>
+              <li>
+                <Link to="/instalaciones" className="header-route">
+                  Instalaciones
+                </Link>
+              </li>
+              <li>
+                <Link to="/chat" className="header-route">
+                  Chat
+                </Link>
+              </li>
+              <li>
+                <Link to="/contacto" className="header-route">
+                  Contacto
+                </Link>
+              </li>
+              <li>
+                <Link to="/reservar" className="header-route">
+                  Reservar Partido
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div >
+            <button className="header-iconPerson">
+              <IoPersonCircle />
+            </button>
           </div>
         </div>
-        <Link to="/contacto">Contacto</Link>
-        <Link to="/chat">Chat</Link>
-        <Link to="/chat">Reservar Partido </Link>
-
-
+      </nav>
+      <div className="header-menuBurguer">
+        <button className="header-button" type="button" onClick={handleClick}>
+          <GiHamburgerMenu />
+        </button>
       </div>
-    </div>
+    </>
   );
 };

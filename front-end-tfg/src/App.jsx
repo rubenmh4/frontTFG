@@ -1,15 +1,24 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
+
+import {  Route, Routes } from 'react-router-dom'
 import './App.css'
 import Footer from './components/Footer/Footer'
-import Header from './components/Header/Header'
+import {Header} from './components/Header/Header'
+import { Index } from './Pages/Index/Index'
+import { Instalaciones } from './Pages/Instalaciones/Instalaciones'
 
 function App() {
   
   return (
 
 <>
-  <Header />
-  <div style={{height:'800px'}}></div>
+ <Header />
+  <Routes>
+    <Route path='/' element={<Index/>}></Route>
+    <Route path='/instalaciones' element={<Instalaciones/>}></Route>
+    <Route path='/chat' ></Route>
+    <Route path='/contacto' ></Route>
+    <Route path='/reservarPartido' ></Route>
+  </Routes>
   <Footer/>
 </>
   )

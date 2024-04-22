@@ -1,0 +1,24 @@
+main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: fit-content;
+    justify-content: space-around;
+    margin: 10px;
+}
+.icono {
+    height: 40px ;
+    background-color: rgba(216, 202, 202, 0.492);
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.text {
+    display: flex;
+    flex-direction:column ;
+    flex: auto;
+    
+}
