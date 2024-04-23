@@ -1,13 +1,14 @@
-import { IoPersonCircle } from "react-icons/io5";
 import './Card.css'
 
-export const Card =  ({title,span})=> {
+export const Card =  ({title,span, children})=> {
 
 
     return(
         <main>
             <div className="icono">
-                <IoPersonCircle/>
+               {
+               children
+               }
             </div>
             <div className="text">
                 <h4>{title}</h4>

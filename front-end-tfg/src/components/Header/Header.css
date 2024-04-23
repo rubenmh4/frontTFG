@@ -10,11 +10,7 @@ nav {
 }
 .header-logo {
   display: flex;
-  flex-wrap: wrap;
-  width: 25%;
-  margin-left: 10px;
-  padding: 4px;
-  flex: auto;
+  padding: 8px;
 }
 .header-logo img {
   max-height:80px;
@@ -27,7 +23,7 @@ nav {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  width: 65%;
+
 }
 .header-routes {
   display: flex;
@@ -69,7 +65,7 @@ button {
   }
   nav {
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
   }
   .header-container-burger {
     display: flex;

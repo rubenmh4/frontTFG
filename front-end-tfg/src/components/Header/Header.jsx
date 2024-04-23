@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { IoPersonCircle } from "react-icons/io5";
-import logo from './LogoRmPadel.png'
+import { IoPersonCircle  } from "react-icons/io5";
+import logo from './LogoPadelIndoor.png'
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,6 +23,7 @@ export const Header = () => {
             <ul className="header-routes">
               <li>
                 <Link to="/" className="header-route">
+            
                   Inicio
                 </Link>
               </li>
