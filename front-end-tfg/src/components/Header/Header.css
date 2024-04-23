@@ -14,7 +14,6 @@ nav {
 }
 .header-logo img {
   max-height:80px;
-
 } 
 
 
@@ -23,7 +22,7 @@ nav {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-
+  width: 60%;
 }
 .header-routes {
   display: flex;
@@ -46,12 +45,8 @@ Link {
   display: none;
 }
 
-button {
-  border: 1px solid #ccc;
-  padding: 10px;
-  background-color: #f0f0f0;
-}
-.header-iconPerson {
+
+.header-iconPerson , .header-button{
   background: none;
   border: none;
 }
