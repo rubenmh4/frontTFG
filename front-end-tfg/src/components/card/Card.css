@@ -5,7 +5,8 @@ main {
     max-width: fit-content;
     justify-content: space-around;
     margin: 10px;
-    gap: 20px;
+    gap: 20px;   /* Ocupan el 50% del ancho */
+    /* Máximo ancho del 50% */
 }
 .icono {
     height: 40px ;

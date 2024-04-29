@@ -16,10 +16,12 @@
     width: 100%;
     display: grid;
     row-gap: 2rem;
-    background-color: #263238;
+    background-color: #1E2029;
     padding: 1rem 1.5rem;
     position: relative;
+    color: white;
   }
+  
   
   .footer-company-info {
     display: grid;
@@ -43,19 +45,29 @@
     color: #cccccc;
   }
   
-  .footer-company-info .footer-icons {
+.footer-icons {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     column-gap: .75rem;
+    gap: 20px;;
+  color :white;
   }
+  .icons  {
+    display: flex; 
+    gap:8px;
+  }
+
+.icons a {
+  text-decoration: none;
+}
   
-  .footer-company-info .footer-icons svg {
+.footer-icons svg {
     padding: .75rem;
     height: calc(32px + .75rem);
     width: calc(32px + .75rem);
     border-radius: 50%;
-    background-color: #42555f;
-    color: #cccccc;
+    background-color: #e3e3e3;
+    color: black;
     cursor: pointer;
   }
   
@@ -79,25 +91,6 @@
   .footer-links ul li:not(:first-child) {
     color: #cccccc;
     cursor: pointer;
-  }
-  
-  .footer-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .footer-form label {
-    font-size: 1.5rem;
-    color: #fff;
-    font-weight: 500;
-  }
-  
-  .footer-form input {
-    margin-top: 10px;
-    width: 100%;
-    border: none;
-    border-radius: .5rem;
-    padding: .75rem 1.5rem;
   }
   
   @media (min-width: 648px) {
