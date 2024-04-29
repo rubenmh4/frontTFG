@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./Index.css";
 import { IoPerson, IoBookSharp, IoTime } from "react-icons/io5";
 import { Card } from "../../components/card/Card";
-import imageTournament from "./tournamentPadel.jpeg";
+import imageTournament from './tournamentPadel.jpeg'
 
 export const Index = () => {
   const itemsInfo = [
@@ -74,29 +74,30 @@ export const Index = () => {
         </div>
         <div className="index-info-section">
           {itemsInfo.map((item, index) => (
-              <Card key={index} title={item.title} span={item.span}>
-                {item.icon}
-              </Card>
-           
+            <Card key={index} title={item.title} span={item.span}>
+              {item.icon}
+            </Card>
           ))}
         </div>
       </div>
       {/** Section the next tournament*/}
-
+      
       <div className="index-container-tournament">
-        <div className="index-info-tournament">
-          <div className="index-section-text">
-            <h2>I Torneo de Verano</h2>
-            <p>21, 22 y 23 de Junio</p>
-            <p>5 categorías: </p>
-            <p>Tercera, Cuarta, Quinta y Femenino.</p>
-            <p>Muchoos premios, espectáculo y tiempo para disfrutar</p>
-            <h5>¡Que empiecen los torneos en RM Padel Indoor!</h5>
-          </div>
-          <div className="index-section-img">
-            <img src={imageTournament} alt="Image of tournament" />
-          </div>
+      <div className="index-info-tournament">
+        <div className="index-section-text">
+          <h2>I Torneo de Verano</h2>
+          <p>21, 22 y 23 de Junio</p>
+          <p>5 categorías: </p>
+          <p>
+            Tercera, Cuarta, Quinta y Femenino.
+          </p>
+          <p>Muchoos premios, espectáculo y tiempo para disfrutar</p>
+          <h5>¡Que empiecen los torneos en RM Padel Indoor!</h5>
         </div>
+        <div className="index-section-img">
+            <img src={imageTournament} alt="Image of tournament" />
+        </div>
+      </div>
       </div>
     </>
   );
