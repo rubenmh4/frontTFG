@@ -1,5 +1,6 @@
 import { InstalacionesPistas } from "../../components/Instalaciones-Pistas/InstalacionesPistas";
 import { OtrasInstalaciones } from "../../components/OtrasIntalaciones/OtrasInstalaciones";
+import { RenderVar } from "../../components/RenderVar/RenderVar";
 import "./Instalaciones.css";
 
 import { useState } from "react";
@@ -9,24 +10,7 @@ export const Instalaciones = () => {
 
   return (
     <div className="instalaciones-container">
-      <div className="instalaciones-container-list" >
-        <ul className="instalaciones-list"> 
-          <li className={render ? 'active' : ''}
-            onClick={() => {
-              setRender(true);
-            }}
-          >
-            Pistas Indoor
-          </li>
-          <li className={render === false ? 'active' : ''}
-            onClick={() => {
-              setRender(false);
-            }}
-          >
-           Otras instalaciones
-          </li>
-        </ul>
-      </div>
+      <RenderVar render={render} setRender={setRender}/>
 
       <div>
         { render ? <InstalacionesPistas/> : <OtrasInstalaciones/>}
