@@ -1,6 +1,6 @@
 import './RenderVar.css'
 
-export const RenderVar = ({render,setRender}) => {
+export const RenderVar = ({render,setRender,firstElement,secondElement}) => {
     
     return (
     <div className="instalaciones-container-list" >
@@ -10,14 +10,14 @@ export const RenderVar = ({render,setRender}) => {
               setRender(true);
             }}
           >
-            Pistas Indoor
+            {firstElement}
           </li>
           <li className={render === false ? 'active' : ''}
             onClick={() => {
               setRender(false);
             }}
           >
-           Otras instalaciones
+           {secondElement}
           </li>
         </ul>
       </div>

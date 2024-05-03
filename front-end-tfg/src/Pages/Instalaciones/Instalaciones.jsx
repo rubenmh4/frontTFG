@@ -10,7 +10,7 @@ export const Instalaciones = () => {
 
   return (
     <div className="instalaciones-container">
-      <RenderVar render={render} setRender={setRender}/>
+      <RenderVar render={render} setRender={setRender} firstElement={'Pistas Indoor'} secondElement={'Otras instalaciones'}/>
 
       <div>
         { render ? <InstalacionesPistas/> : <OtrasInstalaciones/>}

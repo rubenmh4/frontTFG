@@ -6,6 +6,7 @@ import {Header} from './components/Header/Header'
 import { Index } from './Pages/Index/Index'
 import { Instalaciones } from './Pages/Instalaciones/Instalaciones'
 import { Contacto } from './Pages/Contacto/Contacto'
+import { Chat } from './Pages/Chat/Chat'
 
 function App() {
   
@@ -16,7 +17,7 @@ function App() {
   <Routes>
     <Route path='/' element={<Index/>}></Route>
     <Route path='/instalaciones' element={<Instalaciones/>}></Route>
-    <Route path='/chat' ></Route>
+    <Route path='/chat' element={<Chat />}></Route>
     <Route path='/contacto' element={<Contacto/>}></Route>
     <Route path='/reservarPartido' ></Route>
     <Route path='/usurio/:id' ></Route>
