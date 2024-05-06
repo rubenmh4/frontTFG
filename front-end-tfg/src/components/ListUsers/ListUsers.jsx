@@ -1,8 +1,7 @@
-import React from 'react'
+import { redirect } from 'react-router-dom'
 import './ListUsers.css'
-import { getUserChat } from '../../services/usuario'
 
-export const ListUsers = () => {
+export const ListUsers = ({users}) => {
 
     const admin = false
     
@@ -23,27 +22,15 @@ export const ListUsers = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                    </tr>
+                    {users.map((user) => (
+                        <tr key={user.id}>
+                            <td><img src="" alt='img of user'/></td>
+                            <td>{user.username}</td>
+                            <td>{user.name}</td>
+                            <td>{user.league}</td>
+                            <td>{user.position}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
 

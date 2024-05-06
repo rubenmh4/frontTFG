@@ -20,7 +20,7 @@ function App() {
     <Route path='/chat' element={<Chat />}></Route>
     <Route path='/contacto' element={<Contacto/>}></Route>
     <Route path='/reservarPartido' ></Route>
-    <Route path='/usurio/:id' ></Route>
+    <Route path='/user/:id' element={<Index/>}></Route>
   </Routes>
   <Footer/>
 </>
