@@ -1,4 +1,3 @@
-import { redirect } from 'react-router-dom'
 import './ListUsers.css'
 
 export const ListUsers = ({users}) => {
@@ -23,11 +22,11 @@ export const ListUsers = ({users}) => {
                 </thead>
                 <tbody>
                     {users.map((user) => (
-                        <tr key={user.id}>
-                            <td><img src="" alt='img of user'/></td>
+                        <tr key={user._id}>
+                            <td><img src={user.imgUrl} /></td>
                             <td>{user.username}</td>
                             <td>{user.name}</td>
-                            <td>{user.league}</td>
+                            <td>{user.level}</td>
                             <td>{user.position}</td>
                         </tr>
                     ))}

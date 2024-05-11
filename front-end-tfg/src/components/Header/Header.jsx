@@ -51,7 +51,9 @@ export const Header = () => {
           </div>
           <div >
             <button className="header-iconPerson">
-              <IoPersonCircle />
+              <Link to="/acceso" className="header-route">
+                 <IoPersonCircle/>
+              </Link>
             </button>
           </div>
         </div>

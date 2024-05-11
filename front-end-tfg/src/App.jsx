@@ -7,6 +7,7 @@ import { Index } from './Pages/Index/Index'
 import { Instalaciones } from './Pages/Instalaciones/Instalaciones'
 import { Contacto } from './Pages/Contacto/Contacto'
 import { Chat } from './Pages/Chat/Chat'
+import { LoginRegister } from './Pages/LoginRegister/LoginRegister'
 
 function App() {
   
@@ -21,6 +22,7 @@ function App() {
     <Route path='/contacto' element={<Contacto/>}></Route>
     <Route path='/reservarPartido' ></Route>
     <Route path='/user/:id' element={<Index/>}></Route>
+    <Route path='/acceso' element={<LoginRegister/>}></Route>
   </Routes>
   <Footer/>
 </>

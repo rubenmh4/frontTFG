@@ -1,24 +1,34 @@
 import  { useEffect, useState } from "react";
 import { RenderVar } from "../../components/RenderVar/RenderVar";
 import { ListUsers } from "../../components/ListUsers/ListUsers";
-import { getAllUsers } from "../../services/usuario";
+import axios from "axios";
 
 export const Chat = () => {
   const [render, setRender] = useState(false);
 
-  const [users, setUsers] = useState([])
+  const [usersChat, setUsers] = useState([])
 
+  const fetchGetUser = async ()=> {
+     const res = await axios.get('http://localhost:3001/users')
+    const users = res.data
+    console.log(users)
+    return {users}
+ }
   
 
   useEffect(() => {
-    getAllUsers({setUsers})
+    fetchGetUser()
+    .then(allUsers => {
+      const {users} =allUsers
+      setUsers(users)
+    })
   }, [])
   
   return (
     <div>
       <RenderVar render={render} setRender={setRender} firstElement={'Chat'} secondElement={'Participantes'}/>
 
-      <div>{render ? "" : <ListUsers  users={users}/>}</div>
+      <div>{render ? "" : <ListUsers  users={usersChat}/>}</div>
     </div>
   );
 };
