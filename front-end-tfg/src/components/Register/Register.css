@@ -1,0 +1,31 @@
+.container-register{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(211, 211, 211, 0.129);
+}
+.container-register-form{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    border: 1px solid lightgray;
+    padding: 12px;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    border-radius: 12px;
+    background-color: #fff;
+
+}
+.form-register {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.row-register{
+    display: flex;
+    flex-direction: row;
+
+}

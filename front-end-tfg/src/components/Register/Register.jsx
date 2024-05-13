@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { InputGeneric } from "../InputGenereic/InputGeneric";
 import axios from "axios";
+import './Register.css'
 
 export const Register = () => {
   const [form, setForm] = useState({
@@ -34,9 +35,11 @@ export const Register = () => {
 
   console.log(form)
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>
+    <div className="container-register">
+    
+    <div className="container-register-form">
+      <form onSubmit={handleSubmit} className="form-register">
+        <div className="row-register">
           <InputGeneric
             legend={"Nombre de usuario"}
             type={"text"}
@@ -50,7 +53,7 @@ export const Register = () => {
             handleChange={handleChange}
           />
         </div>
-        <div>
+        <div className="row-register">
           <InputGeneric
             handleChange={handleChange}
             legend={"Email"}
@@ -58,7 +61,7 @@ export const Register = () => {
             name={"email"}
           />
         </div>
-        <div>
+        <div className="row-register">
           <InputGeneric
             legend={"Nombre"}
             type={"text"}
@@ -72,7 +75,7 @@ export const Register = () => {
             handleChange={handleChange}
           />
         </div>
-        <div>
+        <div className="row-register">
           <InputGeneric
             legend={"Posicion de juego"}
             type={"text"}
@@ -88,6 +91,7 @@ export const Register = () => {
         </div>
         <button type="submit">Registarse</button>
       </form>
+      </div>
     </div>
   );
 };
