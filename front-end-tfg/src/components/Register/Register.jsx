@@ -89,7 +89,8 @@ export const Register = () => {
             handleChange={handleChange}
           />
         </div>
-        <button type="submit">Registarse</button>
+
+        <button className="button-register" type="submit">Registarse</button>
       </form>
       </div>
     </div>
