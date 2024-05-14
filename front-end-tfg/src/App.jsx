@@ -8,9 +8,13 @@ import { Instalaciones } from './Pages/Instalaciones/Instalaciones'
 import { Contacto } from './Pages/Contacto/Contacto'
 import { Chat } from './Pages/Chat/Chat'
 import { LoginRegister } from './Pages/LoginRegister/LoginRegister'
+import { Reserva } from './Pages/Reserva/Reserva'
+import { ProtectedRouter } from './components/ProtectedRouter/ProtectedRouter'
+import { useAuthStore } from './store/auth'
 
 function App() {
-  
+  const {isAuth} = useAuthStore()
+
   return (
 
 <>
@@ -18,11 +22,15 @@ function App() {
   <Routes>
     <Route path='/' element={<Index/>}></Route>
     <Route path='/instalaciones' element={<Instalaciones/>}></Route>
-    <Route path='/chat' element={<Chat />}></Route>
     <Route path='/contacto' element={<Contacto/>}></Route>
-    <Route path='/reservarPartido' ></Route>
     <Route path='/user/:id' element={<Index/>}></Route>
     <Route path='/acceso' element={<LoginRegister/>}></Route>
+
+    <Route element={<ProtectedRouter isAuth={isAuth}/>}>
+      <Route path='/chat' element={<Chat />}></Route>
+      <Route path='/reservar' element={<Reserva/>}></Route>
+
+    </Route>
   </Routes>
   <Footer/>
 </>

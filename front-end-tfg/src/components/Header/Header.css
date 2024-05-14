@@ -50,6 +50,23 @@ Link {
   background: none;
   border: none;
 }
+.card-user {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-img img {
+  max-height: 50px;
+  border-radius: 50%;
+}
+.card-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 12px;
+  max-height: 35px;
+}
 
 
 @media screen and (max-width: 935px) {

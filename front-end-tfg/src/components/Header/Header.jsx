@@ -4,9 +4,15 @@ import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoPersonCircle  } from "react-icons/io5";
 import logo from './LogoPadelIndoor.png'
+import { useAuthStore } from "../../store/auth";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const {profile} = useAuthStore()
+//  const logOut = useAuthStore(state => state.logOut)
+
+
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -50,11 +56,25 @@ export const Header = () => {
             </ul>
           </div>
           <div >
-            <button className="header-iconPerson">
-              <Link to="/acceso" className="header-route">
-                 <IoPersonCircle/>
+            {profile === null ? (
+             
+             <button className="header-iconPerson">
+                <Link to="/acceso" className="header-route">
+                   <IoPersonCircle/>
+                </Link>
+              </button>
+
+            ): (
+              <Link to='/user/:id' className="header-route">
+              <aside className='card-user'>
+                <div className="card-img"><img src={'https://unavatar.io/midudev'} /></div>
+                <div className="card-text">
+                  <span><strong>{profile.username}</strong></span>
+                  <span>{profile.name}</span>
+                </div>
+              </aside>
               </Link>
-            </button>
+            )}
           </div>
         </div>
       </nav>

@@ -45,7 +45,7 @@ export const Index = () => {
               </button>
               <button className="index-button-lima">
                 {" "}
-                <Link to="/reservarPartido" className="header-route">
+                <Link to="/reservar" className="header-route">
                   Reservar partido
                 </Link>
               </button>
