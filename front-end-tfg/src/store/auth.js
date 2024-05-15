@@ -7,6 +7,7 @@ export const useAuthStore = create(persist(
         token:null,
         profile:null,
         isAuth:false,
+        admin:false,
         setToken:(token) => set((state)=> ({
             token,
             isAuth:true
@@ -18,8 +19,13 @@ export const useAuthStore = create(persist(
         logOut:()=>set(state =>({
             token:'',
             isAuth:false,
-            profile:null
+            profile:null,
+            admin:false
+        })),
+        setAdmin:()=>set(state =>({
+            admin:true
         }))
+
     }),{
         name:'auth'
     }

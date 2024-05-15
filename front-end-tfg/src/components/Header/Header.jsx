@@ -8,12 +8,10 @@ import { useAuthStore } from "../../store/auth";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const {profile} = useAuthStore()
-//  const logOut = useAuthStore(state => state.logOut)
-
-
-
+  //  const logOut = useAuthStore(state => state.logOut)
+  const adminStorage = useAuthStore(state => state.admin)
+  
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
@@ -53,6 +51,13 @@ export const Header = () => {
                   Reservar Partido
                 </Link>
               </li>
+              {adminStorage && (
+                <li>
+                  <Link to="/dashboard" className="header-route">
+                    <strong> Dashboard</strong>
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
           <div >
@@ -65,7 +70,7 @@ export const Header = () => {
               </button>
 
             ): (
-              <Link to='/user/:id' className="header-route">
+              <Link to={'/user/' + profile._id} className="header-route">
               <aside className='card-user'>
                 <div className="card-img"><img src={'https://unavatar.io/midudev'} /></div>
                 <div className="card-text">

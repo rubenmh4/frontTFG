@@ -11,7 +11,6 @@ export const Chat = () => {
   const fetchGetUser = async ()=> {
      const res = await axios.get('http://localhost:3001/users')
     const users = res.data
-    console.log(users)
     return {users}
  }
   
@@ -28,7 +27,7 @@ export const Chat = () => {
     <div>
       <RenderVar render={render} setRender={setRender} firstElement={'Chat'} secondElement={'Participantes'}/>
 
-      <div>{render ? "" : <ListUsers  users={usersChat}/>}</div>
+      <div>{render ? "" : <ListUsers mode={'chat'} users={usersChat}/>}</div>
     </div>
   );
 };

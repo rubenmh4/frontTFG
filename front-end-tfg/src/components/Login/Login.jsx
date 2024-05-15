@@ -5,6 +5,8 @@ import "./Login.css";
 import {useAuthStore} from '../../store/auth'
 import {useNavigate} from 'react-router-dom'
 export const Login = () => {
+  const {setAdmin} = useAuthStore()
+
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -22,7 +24,6 @@ export const Login = () => {
       [name]: value,
     });
   };
-  console.log(form);
   const fetchPostLogin = async () => {
     const res = await axios.post("http://localhost:3001/users/login", form);
     setToken(res.data.jwt)
@@ -31,9 +32,11 @@ export const Login = () => {
 
   const fetchProfile = async()=>{
    const username = form.username
-   console.log(username)
-    const res = await axios.get(`http://localhost:3001/users/${username}`)
+    const res = await axios.get(`http://localhost:3001/users/username/${username}`)
     setProfile(res.data)
+    if(res.data.username === 'admin'){
+      setAdmin()
+    }
     navigate('/')
   }
   const handleSubmit = (e) => {

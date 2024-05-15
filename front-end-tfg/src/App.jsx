@@ -11,6 +11,7 @@ import { LoginRegister } from './Pages/LoginRegister/LoginRegister'
 import { Reserva } from './Pages/Reserva/Reserva'
 import { ProtectedRouter } from './components/ProtectedRouter/ProtectedRouter'
 import { useAuthStore } from './store/auth'
+import User from './Pages/User/User'
 
 function App() {
   const {isAuth} = useAuthStore()
@@ -23,7 +24,7 @@ function App() {
     <Route path='/' element={<Index/>}></Route>
     <Route path='/instalaciones' element={<Instalaciones/>}></Route>
     <Route path='/contacto' element={<Contacto/>}></Route>
-    <Route path='/user/:id' element={<Index/>}></Route>
+    <Route path='/user/:id' element={<User/>}></Route>
     <Route path='/acceso' element={<LoginRegister/>}></Route>
 
     <Route element={<ProtectedRouter isAuth={isAuth}/>}>
