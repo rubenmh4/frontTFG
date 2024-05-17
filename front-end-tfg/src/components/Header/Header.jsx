@@ -9,7 +9,7 @@ import { useAuthStore } from "../../store/auth";
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const {profile} = useAuthStore()
-  //  const logOut = useAuthStore(state => state.logOut)
+  const logOut = useAuthStore(state => state.logOut)
   const adminStorage = useAuthStore(state => state.admin)
   
   const handleClick = () => {
@@ -70,6 +70,7 @@ export const Header = () => {
               </button>
 
             ): (
+              <>
               <Link to={'/user/' + profile._id} className="header-route">
               <aside className='card-user'>
                 <div className="card-img"><img src={'https://unavatar.io/midudev'} /></div>
@@ -79,6 +80,10 @@ export const Header = () => {
                 </div>
               </aside>
               </Link>
+              <div className="logout">
+                  <button onClick={()=>{logOut()}}>Cerrar sesión</button>
+              </div>
+              </>
             )}
           </div>
         </div>

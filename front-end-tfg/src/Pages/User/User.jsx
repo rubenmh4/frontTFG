@@ -11,8 +11,9 @@ const fetchUserId = async (id) => {
 
 const User = () => {
   const { id } = useParams();
-  const { profile } = useAuthStore();
-const [ownUser,setOwnuser] = useState(false)
+  const { profile,admin } = useAuthStore();
+  const [ownUser, setOwnuser] = useState(false);
+  
   const [user, setUser] = useState({
     _id: "",
     username: "",
@@ -26,15 +27,14 @@ const [ownUser,setOwnuser] = useState(false)
   });
 
   useEffect(() => {
-    if(id === profile._id){
-        setOwnuser(true)
-        setUser(profile)
-        return 
+    if (id === profile._id) {
+      setOwnuser(true);
+      setUser(profile);
+      return;
     }
 
     fetchUserId(id)
       .then((data) => {
-        console.log(data)
         setUser(data);
       })
       .catch((err) => {
@@ -42,8 +42,7 @@ const [ownUser,setOwnuser] = useState(false)
       });
   }, []);
 
-
-console.log(ownUser)
+  console.log(ownUser);
   return (
     <div className="container-page-user">
       <div className="header-user"></div>
@@ -89,8 +88,8 @@ console.log(ownUser)
           </p>
         </div>
       </div>
-      {ownUser && (<h1>hola</h1>)
-      }
+      {ownUser && <h1>hola</h1>}
+      {admin && <h1>hola</h1>}
     </div>
   );
 };
