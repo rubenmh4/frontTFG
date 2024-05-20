@@ -2,6 +2,7 @@ import  { useEffect, useState } from "react";
 import { RenderVar } from "../../components/RenderVar/RenderVar";
 import { ListUsers } from "../../components/ListUsers/ListUsers";
 import axios from "axios";
+import { ChatComponent } from "../../components/Chat/ChatComponent";
 
 export const Chat = () => {
   const [render, setRender] = useState(false);
@@ -13,6 +14,7 @@ export const Chat = () => {
     const users = res.data
     return {users}
  }
+
   
 
   useEffect(() => {
@@ -22,12 +24,15 @@ export const Chat = () => {
       setUsers(users)
     })
   }, [])
-  
+ 
+  //socket io
+
+
   return (
     <div>
       <RenderVar render={render} setRender={setRender} firstElement={'Chat'} secondElement={'Participantes'}/>
 
-      <div>{render ? "" : <ListUsers mode={'chat'} users={usersChat}/>}</div>
+      <div>{render ? <ChatComponent /> : <ListUsers mode={'chat'} users={usersChat}/>}</div>
     </div>
   );
 };
