@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { useAuthStore } from "../../store/auth";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
+import { uploadFile } from "../../firebase/config";
 const fetchUserId = async (id) => {
   const res = await axios.get(`http://localhost:3001/users/${id}`);
   const { data } = res;
@@ -13,7 +14,8 @@ const User = () => {
   const { id } = useParams();
   const { profile,admin } = useAuthStore();
   const [ownUser, setOwnuser] = useState(false);
-  
+  const [image, setImage] = useState()
+
   const [user, setUser] = useState({
     _id: "",
     username: "",
@@ -35,17 +37,31 @@ const User = () => {
 
     fetchUserId(id)
       .then((data) => {
+
         setUser(data);
       })
       .catch((err) => {
         throw new Error(err);
       });
-  }, []);
+  }, [user]);
 
-  console.log(ownUser);
+  const handleChange = (e) =>{
+    setImage(e.target.files[0])
+  }
+  const handleSubmitImage =  async()=>{
+    const url = await uploadFile(profile.username,image)
+    const res = await axios.patch(`http://localhost:3001/users/${user._id}`,{imgUrl:url})
+    setUser({...user,imgUrl:url})
+  }
+
   return (
     <div className="container-page-user">
-      <div className="header-user"></div>
+      <div className="header-user">
+        <img src={`${user.imgUrl}`} alt="image of user" />
+        <h2>{user.username}</h2>
+      </div>
+      <input type="file" accept="image/png, image/jpeg, image/jpg" onChange={handleChange}/>
+      <button onClick={handleSubmitImage} type="submit">Guardar foto</button>
       <div className="data-info">
         <div className="data-owner">
           <p>

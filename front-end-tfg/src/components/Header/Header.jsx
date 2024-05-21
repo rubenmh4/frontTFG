@@ -73,7 +73,7 @@ export const Header = () => {
               <>
               <Link to={'/user/' + profile._id} className="header-route">
               <aside className='card-user'>
-                <div className="card-img"><img src={'https://unavatar.io/midudev'} /></div>
+                <div className="card-img"><img src={profile.imgUrl} /></div>
                 <div className="card-text">
                   <span><strong>{profile.username}</strong></span>
                   <span>{profile.name}</span>
