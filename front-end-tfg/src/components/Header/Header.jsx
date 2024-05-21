@@ -17,7 +17,7 @@ export const Header = () => {
   };
 
   return (
-    <>
+    <div className="container-nav">
       <nav>
         <div className="header-logo">
             <img src={logo} alt="" />
@@ -65,7 +65,7 @@ export const Header = () => {
              
              <button className="header-iconPerson">
                 <Link to="/acceso" className="header-route">
-                   <IoPersonCircle/>
+                   <IoPersonCircle size={25}/>
                 </Link>
               </button>
 
@@ -80,19 +80,22 @@ export const Header = () => {
                 </div>
               </aside>
               </Link>
-              <div className="logout">
-                  <button onClick={()=>{logOut()}}>Cerrar sesión</button>
-              </div>
+           
               </>
             )}
           </div>
         </div>
       </nav>
+      {profile !== null &&
+        <div className="logout">
+          <button onClick={()=>{logOut()}}>Cerrar sesión</button>
+      </div>
+      }
       <div className="header-menuBurguer">
         <button className="header-button" type="button" onClick={handleClick}>
           <GiHamburgerMenu />
         </button>
       </div>
-    </>
+    </div>
   );
 };

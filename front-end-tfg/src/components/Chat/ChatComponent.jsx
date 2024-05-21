@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import{ useEffect, useState } from 'react';
 import socketIOClient from 'socket.io-client';
-
+import { useAuthStore } from '../../store/auth';
+import './chatComponent.css'
 
 
 export const ChatComponent = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
-  const [user, setUser] = useState('');
+  const {profile} = useAuthStore()
 
   useEffect(() => {
     const socket = socketIOClient('http://localhost:3001');
@@ -40,13 +41,14 @@ export const ChatComponent = () => {
   };
 
   const sendMessage = async () => {
-    if (newMessage.trim() && user.trim()) {
+    if (newMessage.trim()) {
       const message = {
-        user: user,
+        user: profile.username,
         message: newMessage,
-        timestamp: getCurrentDateTime()
+        time: getCurrentDateTime()
       };
 
+      console.log(message)
       const socket = socketIOClient('http://localhost:3001');
       socket.emit('sendMessage', message);
       setNewMessage('');
@@ -54,33 +56,31 @@ export const ChatComponent = () => {
   };
 
   return (
-    <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-      <h1>Chat</h1>
-      <div>
-        <input
-          type="text"
-          placeholder="Tu nombre"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-        />
-      </div>
-      <div style={{ border: '1px solid #ccc', padding: '10px', height: '300px', overflowY: 'scroll' }}>
-        {messages.map((msg, index) => (
-          <div key={index}>
-            <strong>{msg.user}:</strong> {msg.message} <em>{msg.timestamp}</em>
+    <div className='container-background-chat'>
+      <div className='container-chat'>
+
+      <div className='container-chat-messages'>
+        {messages.map((msg) => (
+          <div key={msg._id} className={msg.user === profile.username ? 'container-message-right': 'container-message'}>
+           <strong>{msg.user}</strong> 
+            <div className='message'>
+            <span>{msg.message}</span> 
+            </div>
+            <span className='time'>{msg.time}</span>
           </div>
         ))}
       </div>
-      <div>
+      <div className='container-chat-input'>
         <input
           type="text"
           placeholder="Escribe tu mensaje"
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' ? sendMessage() : null}
-        />
+          />
         <button onClick={sendMessage}>Enviar</button>
       </div>
+          </div>
     </div>
   );
 };

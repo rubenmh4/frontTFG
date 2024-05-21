@@ -5,7 +5,7 @@ import axios from "axios";
 import { ChatComponent } from "../../components/Chat/ChatComponent";
 
 export const Chat = () => {
-  const [render, setRender] = useState(false);
+  const [render, setRender] = useState(true);
 
   const [usersChat, setUsers] = useState([])
 
