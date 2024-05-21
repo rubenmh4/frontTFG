@@ -3,7 +3,7 @@ import { InputGeneric } from "../InputGenereic/InputGeneric";
 import axios from "axios";
 import "./Register.css";
 
-export const Register = () => {
+export const Register = ({setRender}) => {
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -19,7 +19,9 @@ export const Register = () => {
     const res = await axios.post("http://localhost:3001/users/register", form);
     console.log(res);
   };
-
+  const changeRender = ()=>{
+    setRender(true)
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     if (repeatPassword !== form.password) {
@@ -29,6 +31,15 @@ export const Register = () => {
       setDeploy(false);
     }
     fetchPostUser();
+    setForm({ username: "",
+    password: "",
+    email: "",
+    name: "",
+    firstName: "",
+    level: "",
+    position: "",})
+    changeRender()
+
   };
   const handleChange = (e) => {
     const { name, value } = e.target;

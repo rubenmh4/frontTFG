@@ -10,7 +10,7 @@ export const LoginRegister = () => {
     <div>
     <RenderVar render={render} setRender={setRender} firstElement={'Iniciar Sesión'} secondElement={'Registarse'}/>
 
-    <div>{render ? <Login/> : <Register/>}</div>
+    <div>{render ? <Login/> : <Register setRender={setRender}/>}</div>
   </div>
   )
 }

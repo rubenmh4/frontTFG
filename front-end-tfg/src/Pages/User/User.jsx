@@ -15,6 +15,7 @@ const User = () => {
   const { profile,admin } = useAuthStore();
   const [ownUser, setOwnuser] = useState(false);
   const [image, setImage] = useState()
+  const [render, setRender] = useState(false)
 
   const [user, setUser] = useState({
     _id: "",
@@ -43,7 +44,7 @@ const User = () => {
       .catch((err) => {
         throw new Error(err);
       });
-  }, [user]);
+  }, []);
 
   const handleChange = (e) =>{
     setImage(e.target.files[0])
