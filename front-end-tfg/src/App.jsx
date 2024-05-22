@@ -29,7 +29,7 @@ function App() {
     <Route element={<ProtectedRouter isAuth={isAuth}/>}>
       <Route path='/chat' element={<Chat />}></Route>
       <Route path='/reservar' element={<Reserva/>}></Route>
-      <Route path='/user/:id' element={<User/>}></Route>
+    <Route path='/user/:id' element={<User/>}></Route>
 
     </Route>
   </Routes>
