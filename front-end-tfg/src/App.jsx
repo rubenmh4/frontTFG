@@ -24,12 +24,12 @@ function App() {
     <Route path='/' element={<Index/>}></Route>
     <Route path='/instalaciones' element={<Instalaciones/>}></Route>
     <Route path='/contacto' element={<Contacto/>}></Route>
-    <Route path='/user/:id' element={<User/>}></Route>
     <Route path='/acceso' element={<LoginRegister/>}></Route>
 
     <Route element={<ProtectedRouter isAuth={isAuth}/>}>
       <Route path='/chat' element={<Chat />}></Route>
       <Route path='/reservar' element={<Reserva/>}></Route>
+      <Route path='/user/:id' element={<User/>}></Route>
 
     </Route>
   </Routes>

@@ -53,3 +53,34 @@
     font-size: 10px;
     color: rgb(173, 170, 170);
 }
+
+::-webkit-scrollbar{
+    width: 8px;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: lightgray;
+}
+::-webkit-scrollbar-track{
+    border-radius: 10px;
+    background-color: rgba(212, 212, 212, 0.286);;
+}
+
+.container-chat-input{
+    display: flex;
+    flex-direction:row;
+    width: 100%;
+}
+.input-chat{
+    color: black;
+    width: 75%;
+    border-radius: 10px;
+    border:1px solid lightgray;
+    padding: 10px;
+}
+.button-chat{
+    border-radius: 10px;
+    width: 15%;
+    font-weight: bold;
+    background-color: #e1ff00;
+}

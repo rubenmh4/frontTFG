@@ -70,6 +70,7 @@ export const ChatComponent = () => {
           </div>
         ))}
       </div>
+      <hr />
       <div className='container-chat-input'>
         <input
           type="text"
@@ -77,8 +78,9 @@ export const ChatComponent = () => {
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' ? sendMessage() : null}
+          className='input-chat'
           />
-        <button onClick={sendMessage}>Enviar</button>
+        <button className='button-chat' onClick={sendMessage}>Enviar</button>
       </div>
           </div>
     </div>
