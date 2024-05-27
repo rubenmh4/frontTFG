@@ -2,6 +2,8 @@ import { useState } from "react";
 import { InputGeneric } from "../InputGenereic/InputGeneric";
 import axios from "axios";
 import "./Register.css";
+import {toast, ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Register = ({setRender}) => {
   const [form, setForm] = useState({
@@ -15,22 +17,46 @@ export const Register = ({setRender}) => {
   });
   const [repeatPassword, setRepeatPassword] = useState("");
   const [deploy, setDeploy] = useState(false);
+
+  
   const fetchPostUser = async () => {
     const res = await axios.post("http://localhost:3001/users/register", form);
     console.log(res);
+    
   };
   const changeRender = ()=>{
-    setRender(true)
+    toast.success('Registro realizado correctamente', {
+      position: "bottom-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+    
+    
   }
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (repeatPassword !== form.password) {
-      setDeploy(true);
+      toast.error('Las contraseñas no coinciden', {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       return;
     } else {
       setDeploy(false);
     }
     fetchPostUser();
+   
+    
     setForm({ username: "",
     password: "",
     email: "",
@@ -38,8 +64,10 @@ export const Register = ({setRender}) => {
     firstName: "",
     level: "",
     position: "",})
-    changeRender()
-
+    
+    
+      
+      changeRender()
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -74,6 +102,7 @@ export const Register = ({setRender}) => {
               handleChange={handleChange}
               required={true}
             />
+            
             <InputGeneric
               legend={"Repetir contraseña"}
               type={"password"}
@@ -134,6 +163,7 @@ export const Register = ({setRender}) => {
           </button>
         </form>
       </div>
+      <ToastContainer/>
     </div>
   );
 };
