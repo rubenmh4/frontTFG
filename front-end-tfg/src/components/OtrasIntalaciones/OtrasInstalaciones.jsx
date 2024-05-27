@@ -9,7 +9,7 @@ export const OtrasInstalaciones = () => {
         <header className="header">
           <h2>Zona de bar</h2>
           <p>
-            ¡Relájate después de jugar al pádel en nuestro bar! <br />
+            ¡Relájate después de jugar al pádel en nuestro bar! 
             Contamos con bebidas y snacks para recargar energías.
           </p>
         </header>

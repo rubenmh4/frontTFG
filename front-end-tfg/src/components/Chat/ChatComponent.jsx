@@ -1,13 +1,13 @@
-import{ useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import socketIOClient from 'socket.io-client';
 import { useAuthStore } from '../../store/auth';
-import './chatComponent.css'
-
+import './chatComponent.css';
 
 export const ChatComponent = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
-  const {profile} = useAuthStore()
+  const { profile } = useAuthStore();
+  const messagesEndRef = useRef(null);
 
   useEffect(() => {
     const socket = socketIOClient('http://localhost:3001');
@@ -26,6 +26,14 @@ export const ChatComponent = () => {
       socket.disconnect();
     };
   }, []);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   const getCurrentDateTime = () => {
     const date = new Date();
@@ -48,7 +56,7 @@ export const ChatComponent = () => {
         time: getCurrentDateTime()
       };
 
-      console.log(message)
+      console.log(message);
       const socket = socketIOClient('http://localhost:3001');
       socket.emit('sendMessage', message);
       setNewMessage('');
@@ -58,32 +66,31 @@ export const ChatComponent = () => {
   return (
     <div className='container-background-chat'>
       <div className='container-chat'>
-
-      <div className='container-chat-messages'>
-        {messages.map((msg) => (
-          <div key={msg._id} className={msg.user === profile.username ? 'container-message-right': 'container-message'}>
-           <strong>{msg.user}</strong> 
-            <div className='message'>
-            <span>{msg.message}</span> 
+        <div className='container-chat-messages'>
+          {messages.map((msg) => (
+            <div key={msg._id} className={msg.user === profile.username ? 'container-message-right' : 'container-message'}>
+              <strong>{msg.user}</strong>
+              <div className='message'>
+                <span>{msg.message}</span>
+              </div>
+              <span className='time'>{msg.time}</span>
             </div>
-            <span className='time'>{msg.time}</span>
-          </div>
-        ))}
-      </div>
-      <hr />
-      <div className='container-chat-input'>
-        <input
-          type="text"
-          placeholder="Escribe tu mensaje"
-          value={newMessage}
-          onChange={(e) => setNewMessage(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' ? sendMessage() : null}
-          className='input-chat'
+          ))}
+          <div ref={messagesEndRef} />
+        </div>
+        <hr />
+        <div className='container-chat-input'>
+          <input
+            type="text"
+            placeholder="Escribe tu mensaje"
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' ? sendMessage() : null}
+            className='input-chat'
           />
-        <button className='button-chat' onClick={sendMessage}>Enviar</button>
+          <button className='button-chat' onClick={sendMessage}>Enviar</button>
+        </div>
       </div>
-          </div>
     </div>
   );
 };
-

@@ -1,56 +1,150 @@
-.container-page-user{
+/* User.css */
+
+.container-page-user {
     display: flex;
     flex-direction: column;
-    margin:2rem;
-    box-shadow: 3px 3px 3px 3px lightgray;
-    border-radius: 10px;
-}
-.header-user{
+    align-items: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+    width: 100%;
+  }
+  .edit{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .row1{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 60%;
-    align-self: center;
-    align-items: center;
-    margin: 20px 0;
-    padding: 10px 0;
-    box-shadow: 3px 3px 3px 3px lightgray;
-    border-radius: 10px;
-    background-color: #fff;
-}
-.header-user img{
-    display: flex;
-    width: 175px;
-    height: 175px;
-    border-radius: 50%;
-    box-shadow: 3px 3px 3px 3px lightgray;
-}
-.button-user {
-    align-self: flex-end;
-    border-radius: 10px;
-    border: 1px solid lightgray;
-}
-.data-info{
-    display: flex;
-    flex-direction:row;
-    justify-content: space-around;
-    margin: 20px 0;
-}
-.data-owner p{
-    display: flex;
-    flex-direction: column;
-    border: 1px solid gray;
-    padding: 10px;
-    text-align: center;
-    background-color:#e1ff001c;
-}
-.data-right p {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid gray;
-    padding: 10px;
-    text-align: center;
-    background-color:#1e202933;
-}
-.updateImage{align-self: center;}
+    width: 90%;
 
+  }
+  
+  .header-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+  }
+  
+  .header-user img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+  
+  .header-user h2 {
+    margin: 10px 0;
+  }
+  
+  .button-user {
+    background-color: #1E2029;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .yellow{
+    background-color: #e1ff00;
+    color: black;
+    
+  }
+  
+  .button-user:hover {
+    background-color: #1e2029a2;
+  }
+  
+  .updateImage {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .updateImage input {
+    margin-bottom: 10px;
+  }
+  
+  .updateImage button {
+    background-color: #1E2029;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .updateImage button:hover {
+    background-color: #1e2029a2;
+  }
+  
+  .data-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+  }
+  
+  .data-owner, .data-right {
+    width: 50%;
+    padding: 10px;
+  }
+  
+  .data-owner p, .data-right p {
+    margin-bottom: 15px;
+  }
+  
+  .span-bold {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .data-owner p input, .data-right p input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  hr {
+    margin: 10px 0;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .extra-info {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+  }
+  

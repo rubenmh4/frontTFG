@@ -2,8 +2,10 @@ import axios from 'axios'
 import './ListUsers.css'
 import { FaRegTrashAlt } from "react-icons/fa";
 import { useAuthStore } from '../../store/auth';
+import { useNavigate } from 'react-router-dom';
 
 export const ListUsers = ({users,mode}) => {
+    const navigate = useNavigate()
 
     const {admin} = useAuthStore()
     const deleteUser = async(id)=>{
@@ -28,6 +30,9 @@ export const ListUsers = ({users,mode}) => {
         deleteUserChat(id)
     }
 
+    const handleNavigate  = (id) => {
+        navigate(`/user/${id}`)
+    }
 
     return (
         <div className='container-table'>
@@ -48,7 +53,9 @@ export const ListUsers = ({users,mode}) => {
                     {users.map((user) => {
                         const id = user._id
                         return(
-                        <tr key={user._id}>
+                        <tr key={user._id} onClick={()=>{
+                            handleNavigate(id)
+                        }}>
                             <td><img src={user.imgUrl} /></td>
                             <td>{user.username}</td>
                             <td>{user.name}</td>

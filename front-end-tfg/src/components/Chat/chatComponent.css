@@ -19,7 +19,7 @@
 .container-chat-messages{
     display: flex;
     flex-direction: column;
-    height: 450px;
+    height: 400px;
     align-self: center;
     overflow-y: scroll;
     width:90%; 
