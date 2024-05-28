@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { uploadFile } from "../../firebase/config";
 import "./User.css";
+import { toast, ToastContainer } from "react-toastify";
 
 const fetchUserId = async (id) => {
   const res = await axios.get(`http://localhost:3001/users/${id}`);
@@ -11,19 +12,19 @@ const fetchUserId = async (id) => {
   return data;
 };
 
-const fetchBookings = async (id)=>{
-  const res = await axios.get(`http://localhost:3001/booking/${id}`)
-  const {data} = res
-  return data
-}
+const fetchBookings = async (id) => {
+  const res = await axios.get(`http://localhost:3001/booking/${id}`);
+  const { data } = res;
+  return data;
+};
 
 const User = () => {
   const { id } = useParams();
-  const { profile, admin, setProfile } = useAuthStore();
+  const { profile, setProfile } = useAuthStore();
   const [ownUser, setOwnuser] = useState(false);
   const [image, setImage] = useState();
   const [edit, setEdit] = useState(false);
-  const [booking, setBooking] = useState()
+  const [booking, setBooking] = useState([]);
 
   const [user, setUser] = useState({
     _id: "",
@@ -39,7 +40,7 @@ const User = () => {
   useEffect(() => {
     if (id == profile._id) {
       setOwnuser(true);
-      setUser({...user,profile});
+      setUser({ ...user, profile });
     }
 
     fetchUserId(id)
@@ -49,48 +50,49 @@ const User = () => {
       .catch((err) => {
         throw new Error(err);
       });
+
+    fetchBookings(profile._id)
+      .then((data) => {
+        setBooking(data);
+      })
+      .catch((err) => {
+        throw new Error(err);
+      });
   }, [id, profile]);
-
-  useEffect(() => {
-    
-    
-      fetchBookings(profile._id)
-      .then(data =>{   
-        setBooking(data)
-      })
-      .catch(err =>{
-        throw new Error(err)
-      })
-    
-  }, [])
-  
-
 
   const handleChange = (e) => {
     setImage(e.target.files[0]);
   };
-  const handleChangeInput = (e)=>{
-    const {name,value} = e.target
-    console.log(name,value)
-    setUser({...user,
-      [name]:value
-    })
-  }
-  const handleSaveData = async () =>{
+  const handleChangeInput = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value);
+    setUser({ ...user, [name]: value });
+  };
+  const handleSaveData = async () => {
     const userModified = {
-      username:user.username,
-      name:user.name,
-      firstName:user.firstName,
-      level:user.level,
-      position:user.position,
-      email:user.email
-    }
-    
-    const res = await axios.patch(`http://localhost:3001/users/${user._id}`,userModified)
-    console.log(res) 
-    setProfile({...profile,...user})
-  }
-
+      username: user.username,
+      name: user.name,
+      firstName: user.firstName,
+      level: user.level,
+      position: user.position,
+      email: user.email,
+    };
+    const res = await axios.patch(
+      `http://localhost:3001/users/${user._id}`,
+      userModified
+    );
+    console.log(res);
+    setProfile({ ...profile, ...user });
+    toast.success("Datos guardados correctamente", {
+      position: "bottom-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   const handleSubmitImage = async () => {
     const url = await uploadFile(profile.username, image);
@@ -99,19 +101,30 @@ const User = () => {
     });
     setUser({ ...user, imgUrl: url });
     setProfile({ ...profile, imgUrl: url });
+    toast.success("Imagen guardada correctamente", {
+      position: "bottom-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
+  function convertirHora(valor) {
+    return (typeof valor === 'number' && !Number.isInteger(valor) && valor.toString().endsWith('.3')) 
+        ? `${Math.floor(valor)}:30` 
+        : valor;
+}
 
-  console.log(booking)
   return (
     <div className="container-page-user">
-      
       <div className="row1">
-      <div className="edit">
-
-      <div className="header-user">
-        <img src={user.imgUrl} alt="User" />
-        {edit ? (
-              <input 
+        <div className="edit">
+          <div className="header-user">
+            <img src={user.imgUrl} alt="User" />
+            {edit ? (
+              <input
                 placeholder="Username"
                 name="username"
                 value={user.username}
@@ -120,121 +133,145 @@ const User = () => {
             ) : (
               <h2>{user.username}</h2>
             )}
-        {ownUser && (
-          <button 
-            className="button-user"
-            onClick={() => { setEdit(!edit); }}
-          >
-            Editar
-          </button>
-        )}
-      </div>
-      {edit && (
-        <div className="updateImage">
-          <input
-            type="file"
-            accept="image/png, image/jpeg, image/jpg"
-            onChange={handleChange}
-          />
-          <button onClick={handleSubmitImage} type="submit">
-            Guardar foto
-          </button>
-        </div>
-      )}
-      </div>
-      <div className="data-info">
-        <div className="data-owner">
-          <p>
-            <span className="span-bold">Nombre</span>
-            <hr />
-            {edit ? (
-              <input 
-                placeholder="Nombre"
-                name="name"
-                value={user.name}
-                onChange={handleChangeInput}
-              />
-            ) : (
-              <span>{user.name}</span>
+            {ownUser && (
+              <button
+                className="button-user"
+                onClick={() => {
+                  setEdit(!edit);
+                }}
+              >
+                Editar
+              </button>
             )}
-          </p>
-          <p>
-            <span className="span-bold">Apellidos</span>
-            <hr />
-            {edit ? (
-              <input 
-                placeholder="Apellidos"
-                name="firstName"
-                value={user.firstName}
-                onChange={handleChangeInput}
-              />
-            ) : (
-              <span>{user.firstName}</span>
-            )}
-          </p>
-          <p>
-            <span className="span-bold">Email</span>
-            <hr />
-            {edit ? (
-              <input 
-                placeholder="Email"
-                type="email"
-                name="email"
-                value={user.email}
-                onChange={handleChangeInput}
-              />
-            ) : (
-              <span>{user.email}</span>
-            )}
-          </p>
-        </div>
-        <div className="data-right">
-          <p>
-            <span className="span-bold">Posición</span>
-            <hr />
-            {edit ? (
-              <input 
-                placeholder="Posición"
-                name="position"
-                value={user.position}
-                onChange={handleChangeInput}
-              />
-            ) : (
-              <span>{user.position}</span>
-            )}
-          </p>
-          <p>
-            <span className="span-bold">Nivel</span>
-            <hr />
-            {edit ? (
-              <input 
-                placeholder="Nivel"
-                name="level"
-                value={user.level}
-                onChange={handleChangeInput}
-              />
-            ) : (
-              <span>{user.level}</span>
-            )}
-          </p>
+          </div>
           {edit && (
-            <button type="submit" className="button-user yellow" onClick={handleSaveData}>Guardar cambios</button>
+            <div className="updateImage">
+              <input
+                type="file"
+                accept="image/png, image/jpeg, image/jpg"
+                onChange={handleChange}
+              />
+              <button onClick={handleSubmitImage} type="submit">
+                Guardar foto
+              </button>
+            </div>
           )}
         </div>
-      </div>
+        <div className="data-info">
+          <div className="data-owner">
+            <p>
+              <span className="span-bold">Nombre</span>
+              <hr />
+              {edit ? (
+                <input
+                  placeholder="Nombre"
+                  name="name"
+                  value={user.name}
+                  onChange={handleChangeInput}
+                />
+              ) : (
+                <span>{user.name}</span>
+              )}
+            </p>
+            <p>
+              <span className="span-bold">Apellidos</span>
+              <hr />
+              {edit ? (
+                <input
+                  placeholder="Apellidos"
+                  name="firstName"
+                  value={user.firstName}
+                  onChange={handleChangeInput}
+                />
+              ) : (
+                <span>{user.firstName}</span>
+              )}
+            </p>
+            <p>
+              <span className="span-bold">Email</span>
+              <hr />
+              {edit ? (
+                <input
+                  placeholder="Email"
+                  type="email"
+                  name="email"
+                  value={user.email}
+                  onChange={handleChangeInput}
+                />
+              ) : (
+                <span>{user.email}</span>
+              )}
+            </p>
           </div>
+          <div className="data-right">
+            <p>
+              <span className="span-bold">Posición</span>
+              <hr />
+              {edit ? (
+                <input
+                  placeholder="Posición"
+                  name="position"
+                  value={user.position}
+                  onChange={handleChangeInput}
+                />
+              ) : (
+                <span>{user.position}</span>
+              )}
+            </p>
+            <p>
+              <span className="span-bold">Nivel</span>
+              <hr />
+              {edit ? (
+                <input
+                  placeholder="Nivel"
+                  name="level"
+                  value={user.level}
+                  onChange={handleChangeInput}
+                />
+              ) : (
+                <span>{user.level}</span>
+              )}
+            </p>
+            {edit && (
+              <button
+                type="submit"
+                className="button-user yellow"
+                onClick={handleSaveData}
+              >
+                Guardar cambios
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
 
-      {(ownUser) && (
+      {ownUser && (
         <div className="extra-info">
           <table>
             <thead>
               <tr>
-                
+                <th>Pista</th>
+                <th>Hora</th>
+                <th>Dia</th>
+                <th>Acción</th>
               </tr>
-              </thead>
+            </thead>
+            <tbody>
+              {booking.map((reserva) => {
+                const dia = reserva.diaReserva.split('T')[0];
+                return (
+                  <tr key={reserva._id}>
+                    <td>{reserva.pista}</td>
+                    <td>{convertirHora(reserva.hora)}</td>
+                    <td>{dia} </td>
+                  </tr>
+                );
+              })}
+            </tbody>
           </table>
         </div>
       )}
+      <ToastContainer />
     </div>
   );
 };

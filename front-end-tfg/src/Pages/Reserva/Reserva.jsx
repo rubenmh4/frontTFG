@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useAuthStore } from "../../store/auth";
 import axios from "axios";
 import "./Reserva.css"; // Asegúrate de importar tu archivo CSS
+import { ToastContainer, toast } from "react-toastify";
 
 const horas = [9, 10.3, 12, 16.3, 18, 19.3, 21];
 
@@ -68,6 +69,15 @@ export const Reserva = () => {
       const res = await axios.post("http://localhost:3001/booking", booking);
       console.log(res);
       setReservas([...reservas, booking]);
+      toast.success('Reserva realizada correctamente', {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       setRender(!render)
     } catch (error) {
       console.error("Error making reserva:", error);
@@ -157,6 +167,7 @@ export const Reserva = () => {
       >
         Reservar
       </button>
+    <ToastContainer/>
     </div>
   );
 };
