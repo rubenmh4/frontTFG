@@ -1,34 +1,11 @@
-import axios from 'axios'
 import './ListUsers.css'
-import { FaRegTrashAlt } from "react-icons/fa";
-import { useAuthStore } from '../../store/auth';
 import { useNavigate } from 'react-router-dom';
 
-export const ListUsers = ({users,mode}) => {
+export const ListUsers = ({users}) => {
     const navigate = useNavigate()
 
-    const {admin} = useAuthStore()
-    const deleteUser = async(id)=>{
-        const res = await axios.delete(`http://localhost:3001/users/${id}`)
-        console.log(res)
-    }
+   
 
-    const handleDeleteUser = (e)=>{
-        const {id} = e.target
-        deleteUser(id)
-    }
-    const deleteUserChat = async (id)=>{
-        const isChat = {isChat:false}
-        const res = await axios.patch(`http://localhost:3001/users/${id}`,isChat)
-        console.log(res)
-    }
-
-    const handleDeleteUserChat = (e)=> {
-        const { id } = e.target
-
-        console.log(e.target)
-        deleteUserChat(id)
-    }
 
     const handleNavigate  = (id) => {
         navigate(`/user/${id}`)
@@ -46,7 +23,7 @@ export const ListUsers = ({users,mode}) => {
                         <th scope="col">Nombre</th>
                         <th scope="col">Nivel</th>
                         <th scope="col">Posición</th>
-                        {admin && <th scope="col">Acción</th>}
+                    
                     </tr>
                 </thead>
                 <tbody>
@@ -61,12 +38,7 @@ export const ListUsers = ({users,mode}) => {
                             <td>{user.name}</td>
                             <td>{user.level}</td>
                             <td>{user.position}</td>
-                            {admin && 
-                            <td>
-                                {mode==='dashboard' && <button className='button-list' title='Eliminar usuario' id={id} onClick={handleDeleteUser}><FaRegTrashAlt id={id}/></button>}
-                                {mode==='chat' &&<button className='button-list' title='Eliminar usuario del chat' id={id} onClick={handleDeleteUserChat}><FaRegTrashAlt id={id}/></button>}
-                            </td>
-                            }
+                            
                         </tr>
                     )})}
                 </tbody>

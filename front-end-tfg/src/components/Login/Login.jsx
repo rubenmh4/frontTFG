@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Login.css";
 import {useAuthStore} from '../../store/auth'
 import {useNavigate} from 'react-router-dom'
+import { ToastContainer, toast } from "react-toastify";
 export const Login = () => {
   const {setAdmin} = useAuthStore()
 
@@ -41,7 +42,20 @@ export const Login = () => {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetchPostLogin();
+    fetchPostLogin()
+    .catch(()=> {
+      toast.error("Usuario o contraseña incorrecta", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }) 
+
+    
   };
 
   return (
@@ -67,6 +81,7 @@ export const Login = () => {
           </button>
         </form>
       </div>
+      <ToastContainer/>
     </div>
   );
 };

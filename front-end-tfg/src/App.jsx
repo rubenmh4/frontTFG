@@ -11,6 +11,7 @@ import { Reserva } from './Pages/Reserva/Reserva';
 import { ProtectedRouter } from './components/ProtectedRouter/ProtectedRouter';
 import { useAuthStore } from './store/auth';
 import User from './Pages/User/User';
+import { Dashboard } from './components/Dashboard/Dashboard';
 
 function App() {
   const { isAuth } = useAuthStore();
@@ -28,6 +29,7 @@ function App() {
             <Route path='/chat' element={<Chat />} />
             <Route path='/reservar' element={<Reserva />} />
             <Route path='/user/:id' element={<User />} />
+            <Route path='/dashboard' element={<Dashboard/>}/>
           </Route>
         </Routes>
       </div>

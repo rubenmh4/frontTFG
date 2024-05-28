@@ -17,6 +17,21 @@ const fetchBookings = async (id) => {
   const { data } = res;
   return data;
 };
+function compararFechas(fechaComparar) {
+  const hoy = new Date();
+  const otraFecha = new Date(fechaComparar);
+  
+  // Reseteamos las horas, minutos, segundos y milisegundos para comparar solo el día
+  hoy.setHours(0, 0, 0, 0);
+  otraFecha.setHours(0, 0, 0, 0);
+
+  return hoy.getTime() === otraFecha.getTime() ? true : false;
+}
+const deleteBDBooking = async (id)=>{
+    const res = await axios.delete(`http://localhost:3001/booking/${id}`)
+    const {data} = res
+    console.log(data)
+  }
 
 const User = () => {
   const { id } = useParams();
@@ -93,6 +108,12 @@ const User = () => {
       progress: undefined,
     });
   };
+
+  const deleteBooking = (id)=>{
+      deleteBDBooking(id)
+      const bookingFiltered = booking.filter(bookin => bookin._id != id)
+      setBooking(bookingFiltered)
+  }
 
   const handleSubmitImage = async () => {
     const url = await uploadFile(profile.username, image);
@@ -264,6 +285,11 @@ const User = () => {
                     <td>{reserva.pista}</td>
                     <td>{convertirHora(reserva.hora)}</td>
                     <td>{dia} </td>
+                    <td>
+                      <button disabled={compararFechas(dia)} onClick={()=>{deleteBooking(reserva._id)}}>
+                        Eliminar
+                      </button>
+                    </td>
                   </tr>
                 );
               })}
