@@ -8,7 +8,7 @@ export const Index = () => {
   const itemsInfo = [
     {
       title: "Sistemas de usuarios",
-      span: "Brindamos con una gestión de usuarios con lo cuál tendrás acceso al historial de reservas,cancelación de reserva o visualización de perfi les.",
+      span: "Brindamos con una gestión de usuarios con lo cuál tendrás acceso al historial de reservas,cancelación de reserva o visualización de perfiles.",
       icon: <IoPerson />,
     },
     {
@@ -18,7 +18,7 @@ export const Index = () => {
     },
     {
       title: "Facilidad y sencillez",
-      span: "Contamos con la facilidad y sencillez de nuestra reserva y gestión de usuario, para que tan solo te llevo un momento.",
+      span: "Contamos con la facilidad y sencillez de nuestra reserva y gestión de usuario, para que tan solo te lleva un momento.",
       icon: <IoTime />,
     },
   ];
@@ -91,7 +91,7 @@ export const Index = () => {
           <p>
             Tercera, Cuarta, Quinta y Femenino.
           </p>
-          <p>Muchoos premios, espectáculo y tiempo para disfrutar</p>
+          <p>Muchos premios, espectáculo y tiempo para disfrutar</p>
           <h5>¡Que empiecen los torneos en RM Padel Indoor!</h5>
         </div>
         <div className="index-section-img">
