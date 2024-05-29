@@ -1,12 +1,11 @@
-.container-background-chat{
+.container-background-chat {
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: center;
-
 }
 
-.container-chat{
+.container-chat {
     display: flex;
     flex-direction: column;
     width: 60%;
@@ -16,17 +15,19 @@
     box-shadow: 5px 5px 5px 5px rgb(80, 78, 78);
     background-color: rgba(212, 212, 212, 0.286);
 }
-.container-chat-messages{
+
+.container-chat-messages {
     display: flex;
     flex-direction: column;
     height: 400px;
     align-self: center;
     overflow-y: scroll;
-    width:90%; 
+    width: 90%; 
     margin-bottom: 8px;
     gap: 6px;
 }
-.container-message{
+
+.container-message {
     display: flex;
     flex-direction: column;
     background-color: #1e20291a;
@@ -36,7 +37,8 @@
     gap: 2px;
     max-width: 325px;
 }
-.container-message-right{
+
+.container-message-right {
     display: flex;
     flex-direction: column;
     background-color: #e1ff0036;
@@ -54,33 +56,85 @@
     color: rgb(173, 170, 170);
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     width: 8px;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: lightgray;
 }
-::-webkit-scrollbar-track{
+
+::-webkit-scrollbar-track {
     border-radius: 10px;
-    background-color: rgba(212, 212, 212, 0.286);;
+    background-color: rgba(212, 212, 212, 0.286);
 }
 
-.container-chat-input{
+.container-chat-input {
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     width: 100%;
 }
-.input-chat{
-    color: black;
+
+.input-chat {
+    color: black; 
     width: 75%;
     border-radius: 10px;
-    border:1px solid lightgray;
+    border: 1px solid lightgray;
     padding: 10px;
 }
-.button-chat{
+
+.button-chat {
     border-radius: 10px;
     width: 15%;
     font-weight: bold;
     background-color: #e1ff00;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container-chat {
+        width: 80%;
+    }
+
+    .container-chat-messages {
+        width: 95%;
+    }
+
+    .input-chat {
+        width: 70%;
+    }
+
+    .button-chat {
+        width: 25%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container-chat {
+        width: 95%;
+        margin: 10px;
+    }
+
+    .input-chat {
+        width: 65%;
+        padding: 8px;
+    }
+
+    .button-chat {
+        width: 30%;
+    }
+
+    .container-chat-input {
+        flex-direction: column;
+    }
+
+    .input-chat {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .button-chat {
+        width: 100%;
+    }
 }

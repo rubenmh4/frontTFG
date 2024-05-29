@@ -117,7 +117,10 @@
 @media screen and (max-width:650px) {
     .index-info-section {
         width: 100%;
-        
+    }
+    .index-section-img img {
+        max-height: 200px;
+        border-radius: 4%;
     }
 }
 

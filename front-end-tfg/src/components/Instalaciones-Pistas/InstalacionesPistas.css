@@ -12,10 +12,10 @@
     flex-direction: column;
     text-align: center;
 }
-.main-pistas{
+
+.main-pistas {
     display: flex;
     flex-direction: column;
-
 }
 
 .cards {
@@ -23,6 +23,7 @@
     flex-direction: row;
     gap: 12px;
 }
+
 .row-card {
     display: flex;
     flex-direction: column;
@@ -33,10 +34,89 @@
     display: flex;
     flex-direction: column;
 }
+
 .img-pistas {
     margin: 6px;
     border-radius: 2%;
     max-height: 320px;
+}
 
+/* Design responsive */
+
+/* Smartphones (portrait and landscape) */
+@media only screen and (max-width: 600px) {
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .row-card {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .images {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .img-pistas {
+        width: 90%;
+        margin: 0.5rem 0;
+    }
+}
+
+/* Tablets and larger smartphones (portrait) */
+@media only screen and (max-width: 768px) {
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .row-card {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .images {
+        flex-direction: column;
+        align-items: center;justify-content: center;
+    }
+    .images div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .img-pistas {
+        width: 80%;
+    }
+}
+
+/* Small laptops */
+@media only screen and (max-width: 1024px) {
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .row-card {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .images {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .img-pistas {
+        width: 70%;
+    }
 }
 

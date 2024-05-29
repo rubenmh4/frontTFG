@@ -1,7 +1,7 @@
 import { IoThermometer } from "react-icons/io5";
 import { Card } from "../card/Card";
 import './OtrasInstalaciones.css'
-
+import { FaPerson, FaPersonDress,FaHandHoldingDroplet, FaBottleWater, FaWifi, FaTv, FaBowlFood  } from "react-icons/fa6";
 export const OtrasInstalaciones = () => {
   return (
     <div className="container-otras-instalaciones">
@@ -19,21 +19,29 @@ export const OtrasInstalaciones = () => {
               <Card
                 span={"Toma un aperitivo después de un gran partido."}
                 title={"Snacks"}
-              ></Card>
+              >
+                <FaBowlFood size={20}/> 
+              </Card>
               <Card
                 span={"TV gratuita para todos los clientes."}
                 title={"TV gratuita"}
-              ></Card>
+              >
+                <FaTv size={20}/> 
+              </Card>
             </div>
             <div className="row-card">
               <Card
                 span={"Red Wi-Fi gratuita para todos los clientes."}
                 title={"Wi-Fi gratuito"}
-              ></Card>
+              >
+                <FaWifi size={20}/>
+              </Card>
               <Card
                 span={"Refréscate tomando algo después de tu partido."}
                 title={"Bebidas"}
-              ></Card>
+              >
+                <FaBottleWater size={20}/> 
+              </Card>
             </div>
           </div>
           <div className="images-instalaciones">
@@ -53,24 +61,24 @@ export const OtrasInstalaciones = () => {
               <Card
                 span={"Duchas y vestuarios para hombre"}
                 title={"Zona hombre"}
-              ></Card>
+              ><FaPerson size={20}/></Card>
               <Card
                 span={"Duchas y vestuarios para mujeres"}
                 title={"Zona mujer"}
-              ></Card>
+              ><FaPersonDress size={20}/></Card>
             </div>
             <div className="row-card">
               <Card
                 span={"Nuestras zonas están totalmente climatizadas "}
                 title={"Climatización"}
               >
-                <IoThermometer />
+                <IoThermometer size={20} />
               </Card>
 
               <Card
                 span={"No te preocupes si olvidas algo par atu aseo"}
                 title={"Material de aseo"}
-              ></Card>
+              ><FaHandHoldingDroplet size={20}/></Card>
             </div>
           </div>
           <div className="images-instalaciones">

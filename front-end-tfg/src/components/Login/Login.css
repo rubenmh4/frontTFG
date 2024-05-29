@@ -1,39 +1,60 @@
-.container-login{
+.container-login {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin:12px 0;
+    margin: 12px 0;
     width: 100%;
 }
 
-.container-login-form{
+.container-login-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border:1px solid #1E2029;
+    border: 1px solid #1E2029;
     border-radius: 12px;
     width: 50%;
-    background-color:#1E2029;
+    background-color: #1E2029;
 }
-.form-login{
+
+.form-login {
     width: 100%;
     display: flex;
     flex-direction: column;
     padding: 12px;
 }
-.row-login{
+
+.row-login {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 12px; /* Added gap for spacing between elements */
 }
-.button-login{
+
+.button-login {
     padding: 6px;
-    border:1px solid #1E2029;
+    border: 1px solid #1E2029;
     align-self: center;
     justify-self: center;
-    border-radius:12px;
+    border-radius: 12px;
     margin-top: 12px;
     width: 50%;
-    background-color:  #e1ff00;
+    background-color: #e1ff00;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container-login-form {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container-login-form {
+        width: 90%;
+    }
+    
+    .button-login {
+        width: 70%;
+    }
 }

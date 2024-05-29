@@ -21,13 +21,13 @@ export const InstalacionesPistas = () => {
               "Disfruta del pádel con cualquier clima en cualquier época."
             }
           >
-            <IoHomeOutline />
+            <IoHomeOutline size={20}/>
           </Card>
           <Card
             title={"Pistas de Calidad"}
             span={"Máxima calidad para los jugadores más exigentes."}
           >
-            <IoStarOutline />
+            <IoStarOutline size={20}/>
           </Card>
         </div>
         <div className="row-card">
@@ -35,13 +35,13 @@ export const InstalacionesPistas = () => {
             title={"Climatización"}
             span={"Nuestro recinto se encuentra 100% climatizado."}
           >
-            <IoThermometer />
+            <IoThermometer size={20}/>
           </Card>
           <Card
             title={"Iluminación Led"}
             span={"Garantizamos una excelente visibilidad y comodidad."}
           >
-            <IoFlashlightOutline />
+            <IoFlashlightOutline size={20}/>
           </Card>
         </div>
       </div>
