@@ -33,7 +33,7 @@ export const Dashboard = () => {
       const fetchReservas = async () => {
         try {
           const res = await axios.get(
-            `https://backtfg-inmi.onrender.com//${selectedDate}`
+            `https://backtfg-inmi.onrender.com/booking/date/${selectedDate}`
           );
           if (Array.isArray(res.data)) {
             setBooking(res.data);
@@ -54,7 +54,7 @@ export const Dashboard = () => {
     const fetchUsers= async () => {
         try {
           const res = await axios.get(
-            `https://backtfg-inmi.onrender.com//users/`
+            `https://backtfg-inmi.onrender.com/users/`
           );
           if (Array.isArray(res.data)) {
             setUsers(res.data);
