@@ -26,14 +26,14 @@ export const Login = () => {
     });
   };
   const fetchPostLogin = async () => {
-    const res = await axios.post("http://localhost:3001/users/login", form);
+    const res = await axios.post("https://backtfg-inmi.onrender.com/users/login", form);
     setToken(res.data.jwt)
     fetchProfile()
   };
 
   const fetchProfile = async()=>{
    const username = form.username
-    const res = await axios.get(`http://localhost:3001/users/username/${username}`)
+    const res = await axios.get(`https://backtfg-inmi.onrender.com/users/username/${username}`)
     setProfile(res.data)
     if(res.data.username === 'admin'){
       setAdmin()

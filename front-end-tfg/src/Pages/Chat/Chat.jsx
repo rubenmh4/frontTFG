@@ -10,7 +10,7 @@ export const Chat = () => {
   const [usersChat, setUsers] = useState([])
 
   const fetchGetUser = async ()=> {
-     const res = await axios.get('http://localhost:3001/users')
+     const res = await axios.get('https://backtfg-inmi.onrender.com/users')
     const users = res.data
     return {users}
  }

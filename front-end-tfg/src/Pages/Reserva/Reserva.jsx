@@ -26,7 +26,7 @@ export const Reserva = () => {
       const fetchReservas = async () => {
         try {
           const res = await axios.get(
-            `http://localhost:3001/booking/date/${selectedDate}`
+            `https://backtfg-inmi.onrender.com/booking/date/${selectedDate}`
           );
           if (Array.isArray(res.data)) {
             setReservas(res.data);
@@ -66,7 +66,7 @@ export const Reserva = () => {
       return;
     }
     try {
-      const res = await axios.post("http://localhost:3001/booking", booking);
+      const res = await axios.post("https://backtfg-inmi.onrender.com/booking", booking);
       console.log(res);
       setReservas([...reservas, booking]);
       toast.success('Reserva realizada correctamente', {

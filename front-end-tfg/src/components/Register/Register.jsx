@@ -20,7 +20,7 @@ export const Register = ({setRender}) => {
 
   
   const fetchPostUser = async () => {
-    const res = await axios.post("http://localhost:3001/users/register", form);
+    const res = await axios.post("https://backtfg-inmi.onrender.com/users/register", form);
     console.log(res);
     
   };

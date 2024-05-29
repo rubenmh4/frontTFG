@@ -7,13 +7,13 @@ import "./User.css";
 import { toast, ToastContainer } from "react-toastify";
 
 const fetchUserId = async (id) => {
-  const res = await axios.get(`http://localhost:3001/users/${id}`);
+  const res = await axios.get(`https://backtfg-inmi.onrender.com/users/${id}`);
   const { data } = res;
   return data;
 };
 
 const fetchBookings = async (id) => {
-  const res = await axios.get(`http://localhost:3001/booking/${id}`);
+  const res = await axios.get(`https://backtfg-inmi.onrender.com/booking/${id}`);
   const { data } = res;
   return data;
 };
@@ -28,7 +28,7 @@ function compararFechas(fechaComparar) {
   return hoy.getTime() === otraFecha.getTime() ? true : false;
 }
 const deleteBDBooking = async (id)=>{
-    const res = await axios.delete(`http://localhost:3001/booking/${id}`)
+    const res = await axios.delete(`https://backtfg-inmi.onrender.com/booking/${id}`)
     const {data} = res
     console.log(data)
   }
@@ -93,7 +93,7 @@ const User = () => {
       email: user.email,
     };
     const res = await axios.patch(
-      `http://localhost:3001/users/${user._id}`,
+      `https://backtfg-inmi.onrender.com/users/${user._id}`,
       userModified
     );
     console.log(res);
@@ -117,7 +117,7 @@ const User = () => {
 
   const handleSubmitImage = async () => {
     const url = await uploadFile(profile.username, image);
-    const res = await axios.patch(`http://localhost:3001/users/${user._id}`, {
+    const res = await axios.patch(`https://backtfg-inmi.onrender.com/users/${user._id}`, {
       imgUrl: url,
     });
     setUser({ ...user, imgUrl: url });

@@ -4,13 +4,13 @@ import { RenderVar } from "../RenderVar/RenderVar";
 import axios from "axios";
 
 const handleDeleteUserBd = async (id) => {
-  const res = await axios.delete(`http://localhost:3001/users/${id}`);
+  const res = await axios.delete(`https://backtfg-inmi.onrender.com/users/${id}`);
   const { data } = res;
   console.log(data);
 };
 
 const handleDeleteBookingBd = async (id) => {
-  const res = await axios.delete(`http://localhost:3001/booking/${id}`);
+  const res = await axios.delete(`https://backtfg-inmi.onrender.com//${id}`);
   const { data } = res;
   console.log(data);
 };
@@ -33,7 +33,7 @@ export const Dashboard = () => {
       const fetchReservas = async () => {
         try {
           const res = await axios.get(
-            `http://localhost:3001/booking/date/${selectedDate}`
+            `https://backtfg-inmi.onrender.com//${selectedDate}`
           );
           if (Array.isArray(res.data)) {
             setBooking(res.data);
@@ -54,7 +54,7 @@ export const Dashboard = () => {
     const fetchUsers= async () => {
         try {
           const res = await axios.get(
-            `http://localhost:3001/users/`
+            `https://backtfg-inmi.onrender.com//users/`
           );
           if (Array.isArray(res.data)) {
             setUsers(res.data);

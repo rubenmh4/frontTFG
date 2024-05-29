@@ -10,7 +10,7 @@ export const ChatComponent = () => {
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
-    const socket = socketIOClient('http://localhost:3001');
+    const socket = socketIOClient('https://backtfg-inmi.onrender.com/');
 
     // Obtener mensajes iniciales
     socket.on('initialMessages', (initialMessages) => {
@@ -56,8 +56,7 @@ export const ChatComponent = () => {
         time: getCurrentDateTime()
       };
 
-      console.log(message);
-      const socket = socketIOClient('http://localhost:3001');
+      const socket = socketIOClient('https://backtfg-inmi.onrender.com/');
       socket.emit('sendMessage', message);
       setNewMessage('');
     }
