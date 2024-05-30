@@ -21,6 +21,10 @@ export const Reserva = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const [render, setRender] = useState(false)
 
+  const checkBooking = ()=>{
+   
+
+  }
   useEffect(() => {
     if (selectedDate) {
       const fetchReservas = async () => {
@@ -61,9 +65,22 @@ export const Reserva = () => {
   };
 
   const handleClickReserva = async () => {
+    
     if (isReserved(booking.pista, booking.hora)) {
       alert("Esta pista ya está reservada para esta hora.");
       return;
+    }
+    if(booking.pista == null || booking.diaReserva == null ||booking.hora == null  ){
+      toast.error('Rellena los campos', {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return 
     }
     try {
       const res = await axios.post("https://backtfg-inmi.onrender.com/booking", booking);
